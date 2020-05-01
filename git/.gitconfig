@@ -1,0 +1,20 @@
+[user]
+  name = Md. Masud Rana
+  email = masudcsesust04@gmail.com
+  signingkey = [GPG SIGNING KEY]
+[core]
+  editor = nvim
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  last = log -1 HEAD
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[commit]
+  gpgsign = true
+
