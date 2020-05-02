@@ -9,14 +9,16 @@
   ci = commit
   cl = clone
   co = checkout
+  ll = log -1 HEAD
   lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
   lg = !"git lg1"
-  og = log --oneline --abbrev-commit --all --graph
+  lp = log --pretty=format:'%Cblue%h %Cred%cD %Creset%cn %Cgreen%s%Creset' --date-order --graph
   rb = rebase
+  st = status
   sl = stash list
   sp = stash pop
-  st = status
-  last = log -1 HEAD
+  sa = stash apply
+  sd = stash drop
 [push]
   default = current
 [filter "lfs"]
