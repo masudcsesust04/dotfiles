@@ -1,3 +1,6 @@
+" Set leader key
+let mapleader = "\<Space>"
+
 " Escape key remap
 imap jj <Esc>
 
@@ -22,4 +25,12 @@ colorscheme industry
 " Set highliting tabs, space trails char
 set listchars=tab:>~,nbsp:_,trail:.
 set list
+
+" Tab commands remap
+nnoremap <leader>to :tabnew<CR>
+nnoremap <leader>tn :tabnext<CR>
+nnoremap <leader>tp :tabprev<CR>
+nnoremap <leader>tf :tabfirst<CR>
+nnoremap <leader>tl :tablast<CR>
+nnoremap <leader>tc :tabclose<CR>
 
