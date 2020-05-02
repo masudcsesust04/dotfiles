@@ -47,3 +47,15 @@ augroup ProjectDrawer
   autocmd VimEnter * :Vexplore
 augroup END
 
+" Install vim-plug https://github.com/junegunn/vim-plug
+" Create '~/.config/nvim/plugged' directory to install plugins
+" Initialize plugin system
+call plug#begin('~/.config/nvim/plugged')
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+call plug#end()
+
+" FZF fuzzy search key remap
+nnoremap <leader>fo :FZF<CR>
+tnoremap <leader>fc <Esc>
+
