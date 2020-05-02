@@ -13,7 +13,8 @@ set autoindent
 set copyindent
 
 " UI config
-set number
+" set number
+set relativenumber
 set showcmd
 set cursorline
 set wildmenu
