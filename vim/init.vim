@@ -55,6 +55,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " FZF fuzzy search key remap
@@ -66,4 +67,18 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#branch#enabled = 1
+
+" GIT gutter
+" set signcolumn=yes
+set updatetime=100
+highlight GitGutterAdd guifg=#009900 ctermfg=Green
+highlight GitGutterChange guifg=#bbbb00 ctermfg=Yellow
+highlight GitGutterAdd guifg=#ff2222 ctermfg=Red
+
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
+let g:gitgutter_enabled=1
+let g:gitgutter_map_keys=0
+let g:gitgutter_async=0
 
