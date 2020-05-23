@@ -53,9 +53,17 @@ augroup END
 call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " FZF fuzzy search key remap
 nnoremap <leader>fo :FZF<CR>
 tnoremap <leader>fc <Esc>
+
+" VIM airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#branch#enabled = 1
 
