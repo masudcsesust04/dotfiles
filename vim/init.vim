@@ -79,6 +79,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'airblade/vim-gitgutter'
+  " Install ctags system package to work tagbar plugin(ex- Ubuntu: apt install ctags or Arch: pacman -S ctags)
+  Plug 'majutsushi/tagbar'
 call plug#end()
 
 " FZF fuzzy search key remap
@@ -104,4 +106,8 @@ nmap [h <Plug>(GitGutterPrevHunk)
 let g:gitgutter_enabled=1
 let g:gitgutter_map_keys=0
 let g:gitgutter_async=0
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
 
