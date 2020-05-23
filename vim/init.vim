@@ -36,16 +36,39 @@ nnoremap <leader>tl :tablast<CR>
 nnoremap <leader>tc :tabclose<CR>
 
 " Netrw file explorer settings
+" Change directory to the current buffer when opening files.
+set autochdir
+
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+let g:NetrwIsOpen = 1
 
 augroup ProjectDrawer
   autocmd!
   autocmd VimEnter * :Vexplore
 augroup END
+
+function! ToggleNetrw()
+  if g:NetrwIsOpen
+    let i = bufnr("$")
+    while (i >= 1)
+      if (getbufvar(i, "&filetype") == "netrw")
+        silent exe "bwipeout " . i 
+      endif
+      let i-=1
+    endwhile
+    let g:NetrwIsOpen=0
+  else
+    let g:NetrwIsOpen=1
+    silent Lexplore
+  endif
+endfunction
+
+" Add your own mapping. For example:
+noremap <silent> <C-E> :call ToggleNetrw()<CR>
 
 " Install vim-plug https://github.com/junegunn/vim-plug
 " Create '~/.config/nvim/plugged' directory to install plugins
