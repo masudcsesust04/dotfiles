@@ -74,20 +74,16 @@ noremap <silent> <C-E> :call ToggleNetrw()<CR>
 " Create '~/.config/nvim/plugged' directory to install plugins
 " Initialize plugin system
 call plug#begin('~/.config/nvim/plugged')
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'airblade/vim-gitgutter'
   " Install ctags system package to work tagbar plugin(ex- Ubuntu: apt install ctags or Arch: pacman -S ctags)
   Plug 'majutsushi/tagbar'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
   " Install ack system package to work tagbar plugin(ex- Ubuntu: apt install ack or Arch: pacman -S ack)
   Plug 'mileszs/ack.vim'
 call plug#end()
-
-" FZF fuzzy search key remap
-nnoremap <leader>fo :FZF<CR>
-tnoremap <leader>fc <Esc>
 
 " VIM airline
 let g:airline_powerline_fonts = 1
@@ -112,4 +108,7 @@ let g:gitgutter_async=0
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
+" FZF fuzzy search key remap
+nnoremap <leader>fo :FZF<CR>
+tnoremap <leader>fc <Esc>
 
