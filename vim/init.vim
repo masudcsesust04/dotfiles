@@ -81,6 +81,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'airblade/vim-gitgutter'
   " Install ctags system package to work tagbar plugin(ex- Ubuntu: apt install ctags or Arch: pacman -S ctags)
   Plug 'majutsushi/tagbar'
+  " Install ack system package to work tagbar plugin(ex- Ubuntu: apt install ack or Arch: pacman -S ack)
+  Plug 'mileszs/ack.vim'
 call plug#end()
 
 " FZF fuzzy search key remap
