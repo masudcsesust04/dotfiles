@@ -83,6 +83,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim'
   " Install ack system package to work tagbar plugin(ex- Ubuntu: apt install ack or Arch: pacman -S ack)
   Plug 'mileszs/ack.vim'
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 " VIM airline
