@@ -16,6 +16,8 @@
   ps = push
   pl = pull
   plm = pull origin master
+  pld = pull origin development
+  plr = pull origin releasee-candidate
   rb = rebase
   st = status
   sh = stash
