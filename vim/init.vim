@@ -1,3 +1,20 @@
+" Install vim-plug https://github.com/junegunn/vim-plug
+" Create '~/.config/nvim/plugged' directory to install plugins
+" Initialize plugin system
+call plug#begin('~/.vim/plugged')
+  Plug 'preservim/nerdtree'
+  Plug 'patstockwell/vim-monokai-tasty'
+  Plug 'itchyny/lightline.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  " Install ack system package to work tagbar plugin(ex- Ubuntu: apt install ack or Arch: pacman -S ack)
+  Plug 'mileszs/ack.vim'
+  Plug 'tpope/vim-surround'
+call plug#end()
+
 " Set leader key
 let mapleader = "\<Space>"
 
@@ -20,8 +37,8 @@ set cursorline
 set wildmenu
 
 " Set color scheme
-syntax on
-colorscheme industry
+" syntax on
+" colorscheme industry
 
 " Set highliting tabs, space trails char
 set listchars=tab:>~,nbsp:_,trail:.
@@ -35,56 +52,53 @@ nnoremap <leader>tf :tabfirst<CR>
 nnoremap <leader>tl :tablast<CR>
 nnoremap <leader>tc :tabclose<CR>
 
-" Netrw file explorer settings
-" Change directory to the current buffer when opening files.
-set autochdir
+" NERD Tree
+map <leader>nn :NERDTreeToggle<CR>                  " Toggle NERD tree.
 
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-let g:NetrwIsOpen = 1
+" Monokai-tasty
+let g:vim_monokai_tasty_italic = 1                  " Allow italics.
+colorscheme vim-monokai-tasty                       " Enable monokai theme.
 
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
+" LightLine.vim 
+set laststatus=2              " To tell Vim we want to see the statusline.
+let g:lightline = {
+   \ 'colorscheme':'monokai_tasty',
+   \ }
 
-function! ToggleNetrw()
-  if g:NetrwIsOpen
-    let i = bufnr("$")
-    while (i >= 1)
-      if (getbufvar(i, "&filetype") == "netrw")
-        silent exe "bwipeout " . i 
-      endif
-      let i-=1
-    endwhile
-    let g:NetrwIsOpen=0
-  else
-    let g:NetrwIsOpen=1
-    silent Lexplore
-  endif
-endfunction
+" General NVIM/VIM Settings
 
-" Add your own mapping. For example:
-noremap <silent> <C-E> :call ToggleNetrw()<CR>
+" Mouse Integration
+set mouse=i
 
-" Install vim-plug https://github.com/junegunn/vim-plug
-" Create '~/.config/nvim/plugged' directory to install plugins
-" Initialize plugin system
-call plug#begin('~/.config/nvim/plugged')
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'airblade/vim-gitgutter'
-  " Install ctags system package to work tagbar plugin(ex- Ubuntu: apt install ctags or Arch: pacman -S ctags)
-  Plug 'majutsushi/tagbar'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-  " Install ack system package to work tagbar plugin(ex- Ubuntu: apt install ack or Arch: pacman -S ack)
-  Plug 'mileszs/ack.vim'
-  Plug 'tpope/vim-surround'
-call plug#end()
+" Search
+set ignorecase                  " To ignore case when searching.
+set smartcase                   " When searching try to be smart about cases.
+set hlsearch                    " To highlight search results.
+set incsearch                   " To make search act like search in modern browsers.
+set magic                       " For regular expressions turn magic on.
+
+" Brackets
+set showmatch                   " To show matching brackets when text indicator 
+                                " is over them.
+set mat=2                       " How many tenths of a second to blink 
+                                " when matching brackets.
+
+" Errors
+set noerrorbells                " No annoying sound on errors.
+
+" Color & Fonts
+syntax enable                   " Enable syntax highlighting.
+set encoding=utf8                " Set utf8 as standard encoding and 
+                                 " en_US as the standard language.
+" Enable 256 colors palette in Gnome Terminal.
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+
+try
+    colorscheme desert
+catch
+endtry
 
 " VIM airline
 let g:airline_powerline_fonts = 1
@@ -113,3 +127,11 @@ nmap <F8> :TagbarToggle<CR>
 nnoremap <leader>fo :FZF<CR>
 tnoremap <leader>fc <Esc>
 
+" Files & Backup
+set nobackup                     " Turn off backup.
+set nowb                         " Don't backup before overwriting a file.
+set noswapfile                   " Don't create a swap file.
+set ffs=unix,dos,mac             " Use Unix as the standard file type.
+
+" Return to last edit position when opening files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
